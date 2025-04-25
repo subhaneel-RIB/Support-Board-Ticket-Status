@@ -1,3 +1,7 @@
+**WEBSITE URL**
+
+     https://subhaneel-rib.github.io/Support-Board-Ticket-Status/
+
 **Support Board Dashboard**
 
      This project uses Chart.js to display the status of support tickets in a visual format. The dashboard represents various ticket statuses through bar charts, making it easy to track the progress and current status of each ticket.
