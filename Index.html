@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket Status Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #canvas {
+      max-width: 7000px;
+      max-height: 800px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Ticket Status per Sprint (Updated Sprint 208)</h2>
+  <canvas id="canvas" width="600" height="400"></canvas>
+
+  <script>
+    const barChartData = {
+      labels: ["Sprint 207", "Sprint 208"],
+      datasets: [
+        {
+          label: "Closed",
+          backgroundColor: "orange",
+          data: [7, 3]
+        },
+        {
+          label: "In QA",
+          backgroundColor: "orangered",
+          data: [11, 2]
+        },
+        {
+          label: "In Dev",
+          backgroundColor: "crimson",
+          data: [3, 3]
+        },
+        {
+          label: "Tickets Created",
+          backgroundColor: "hotpink",
+          data: [6, 12]
+        }
+      ]
+    };
+
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "top"
+        },
+        title: {
+          display: true,
+          text: "Ticket Status per Sprint (Updated Sprint 208)"
+        },
+        datalabels: {
+          anchor: 'end',
+          align: 'top',
+          color: '#000',
+          font: {
+            weight: 'bold'
+          },
+          formatter: (value, context) => `${context.dataset.label}: ${value}`
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 2
+          }
+        }
+      }
+    };
+
+    window.onload = function () {
+      const ctx = document.getElementById("canvas").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: barChartData,
+        options: chartOptions,
+        plugins: [ChartDataLabels]
+      });
+    };
+  </script>
+</body>
+</html>
